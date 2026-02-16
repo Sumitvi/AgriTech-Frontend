@@ -22,6 +22,11 @@ import FarmerSchemes from "../pages/farmer/FarmerSchemes";
 import FarmerPayments from "../pages/farmer/FarmerPayments";
 import ManageProducts from "../pages/store/ManageProducts";
 import StoreOrders from "../pages/store/StoreOrders";
+import TraderTrades from "../pages/trader/TraderTrades";
+import TraderPayments from "../pages/trader/TraderPayments";
+import TraderMarket from "../pages/trader/TraderMarket";
+import TraderMarketplace from "../pages/trader/TraderMarketplace";
+
 
 
 
@@ -156,6 +161,71 @@ const AppRoutes = () => {
                 element={
                     <RoleProtectedRoute allowedRoles={["ADMIN"]}>
                         <AdminDashboard />
+                    </RoleProtectedRoute>
+                }
+            />
+
+
+            <Route
+                path="/trader"
+                element={
+                    <RoleProtectedRoute allowedRoles={["TRADER"]}>
+                        <TraderDashboard />
+                    </RoleProtectedRoute>
+                }
+            />
+
+            <Route
+                path="/trader/trades"
+                element={
+                    <RoleProtectedRoute allowedRoles={["TRADER"]}>
+                        <TraderTrades />
+                    </RoleProtectedRoute>
+                }
+            />
+
+            <Route
+                path="/trader/payments"
+                element={
+                    <RoleProtectedRoute allowedRoles={["TRADER"]}>
+                        <TraderPayments />
+                    </RoleProtectedRoute>
+                }
+            />
+
+            <Route
+                path="/trader/market"
+                element={
+                    <RoleProtectedRoute allowedRoles={["TRADER"]}>
+                        <TraderMarket />
+                    </RoleProtectedRoute>
+                }
+            />
+
+
+            <Route
+                path="/trader"
+                element={
+                    <RoleProtectedRoute allowedRoles={["TRADER"]}>
+                        <TraderDashboard />
+                    </RoleProtectedRoute>
+                }
+            />
+
+            <Route
+                path="/trader/marketplace"
+                element={
+                    <RoleProtectedRoute allowedRoles={["TRADER"]}>
+                        <TraderMarketplace />
+                    </RoleProtectedRoute>
+                }
+            />
+
+            <Route
+                path="/trader/trades"
+                element={
+                    <RoleProtectedRoute allowedRoles={["TRADER"]}>
+                        <TraderTrades />
                     </RoleProtectedRoute>
                 }
             />

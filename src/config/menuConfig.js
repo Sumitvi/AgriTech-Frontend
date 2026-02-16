@@ -18,11 +18,13 @@ export const menuConfig = {
 
   ],
 
-  TRADER: [
-    { name: "Dashboard", path: "/trader" },
-    { name: "Buy Crops", path: "/trader/buy" },
-    { name: "Trades", path: "/trader/trades" }
-  ],
+TRADER: [
+  { name: "Dashboard", path: "/trader" },
+  { name: "My Trades", path: "/trader/trades" },
+  { name: "Payments", path: "/trader/payments" },
+  { name: "Market & MSP", path: "/trader/market" },
+  { name: "Marketplace", path: "/trader/marketplace" },
+],
 
 
 STORE_OWNER: [

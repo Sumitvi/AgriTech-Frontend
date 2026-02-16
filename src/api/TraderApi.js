@@ -5,6 +5,9 @@ import axiosInstance from "./axiosInstance";
 export const buyCrop = (data) =>
   axiosInstance.post(`/trades/buy`, data);
 
+export const getListedTrades = () =>
+  axiosInstance.get("/trades/listed");
+
 export const getTraderTrades = (traderId) =>
   axiosInstance.get(`/trades/trader/${traderId}`);
 
