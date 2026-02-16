@@ -26,6 +26,12 @@ import TraderTrades from "../pages/trader/TraderTrades";
 import TraderPayments from "../pages/trader/TraderPayments";
 import TraderMarket from "../pages/trader/TraderMarket";
 import TraderMarketplace from "../pages/trader/TraderMarketplace";
+import AdminUsers from "../pages/admin/AdminUsers";
+import AdminTrades from "../pages/admin/AdminTrades";
+import AdminPayments from "../pages/admin/AdminPayments";
+import AdminMSP from "../pages/admin/AdminMSP";
+import AdminMandi from "../pages/admin/AdminMandi";
+import AdminContractors from "../pages/admin/AdminContractors";
 
 
 
@@ -155,6 +161,7 @@ const AppRoutes = () => {
                 }
             />
 
+            {/* ================= ADMIN ROUTES ================= */}
 
             <Route
                 path="/admin"
@@ -164,6 +171,63 @@ const AppRoutes = () => {
                     </RoleProtectedRoute>
                 }
             />
+
+            <Route
+                path="/admin/users"
+                element={
+                    <RoleProtectedRoute allowedRoles={["ADMIN"]}>
+                        <AdminUsers />
+                    </RoleProtectedRoute>
+                }
+            />
+
+            <Route
+                path="/admin/trades"
+                element={
+                    <RoleProtectedRoute allowedRoles={["ADMIN"]}>
+                        <AdminTrades />
+                    </RoleProtectedRoute>
+                }
+            />
+
+            <Route
+                path="/admin/payments"
+                element={
+                    <RoleProtectedRoute allowedRoles={["ADMIN"]}>
+                        <AdminPayments />
+                    </RoleProtectedRoute>
+                }
+            />
+
+            <Route
+                path="/admin/msp"
+                element={
+                    <RoleProtectedRoute allowedRoles={["ADMIN"]}>
+                        <AdminMSP />
+                    </RoleProtectedRoute>
+                }
+            />
+
+            <Route
+                path="/admin/mandi"
+                element={
+                    <RoleProtectedRoute allowedRoles={["ADMIN"]}>
+                        <AdminMandi />
+                    </RoleProtectedRoute>
+                }
+            />
+
+            <Route
+                path="/admin/contractors"
+                element={
+                    <RoleProtectedRoute allowedRoles={["ADMIN"]}>
+                        <AdminContractors />
+                    </RoleProtectedRoute>
+                }
+            />
+
+
+           
 
 
             <Route

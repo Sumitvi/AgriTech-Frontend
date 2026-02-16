@@ -69,3 +69,41 @@ export const verifyContractor = (id) =>
 
 export const blockContractor = (id) =>
   axiosInstance.post(`/contractors/admin/block/${id}`);
+
+
+export const getAllMSP = () =>
+  axiosInstance.get(`/msp/all`);
+
+export const updateMSP = (id, data) =>
+  axiosInstance.put(`/msp/update/${id}`, data);
+
+export const deleteMSP = (id) =>
+  axiosInstance.delete(`/msp/delete/${id}`);
+
+
+export const getAllMandi = () =>
+  axiosInstance.get(`/market/mandi/all`);
+
+
+export const updateMandiPrice = (id, data) =>
+  axiosInstance.put(`/market/mandi/update/${id}`, data);
+
+export const deleteMandiPrice = (id) =>
+  axiosInstance.delete(`/market/mandi/delete/${id}`);
+
+
+
+
+
+export const getAllContractors = () =>
+  axiosInstance.get("/contractors/all");
+
+export const searchContractors = (keyword) =>
+  axiosInstance.get(`/contractors/search?keyword=${keyword}`);
+
+export const updateContractor = (id, data) =>
+  axiosInstance.put(`/contractors/update/${id}`, data);
+
+export const deleteContractor = (id) =>
+  axiosInstance.delete(`/contractors/delete/${id}`);
+

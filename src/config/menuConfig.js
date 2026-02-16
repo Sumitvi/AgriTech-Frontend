@@ -34,10 +34,13 @@ STORE_OWNER: [
 ]
 ,
 
-  ADMIN: [
-    { name: "Dashboard", path: "/admin" },
-    { name: "Users", path: "/admin/users" },
-    { name: "Trades", path: "/admin/trades" },
-    { name: "Payments", path: "/admin/payments" }
-  ]
+ ADMIN: [
+  { name: "Dashboard", path: "/admin" },
+  { name: "Users", path: "/admin/users" },
+  { name: "Trades", path: "/admin/trades" },
+  { name: "Payments", path: "/admin/payments" },
+  { name: "Add MSP", path: "/admin/msp" },
+  { name: "Add Mandi", path: "/admin/mandi" },
+  { name: "Contractors", path: "/admin/contractors" }
+]
 };
