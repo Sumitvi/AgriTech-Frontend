@@ -59,12 +59,7 @@ const FarmerCrops = () => {
     }
 
     try {
-      await addCrop(
-        farmerId,
-        form.landId,
-        form
-      );
-
+      await addCrop(farmerId, form.landId, form);
       fetchData();
     } catch (error) {
       console.error("Error adding crop:", error);
@@ -75,7 +70,6 @@ const FarmerCrops = () => {
   const handleHarvest = async (id) => {
 
     const actualYield = prompt("Enter Actual Yield");
-
     if (!actualYield) return;
 
     try {
@@ -86,15 +80,43 @@ const FarmerCrops = () => {
     }
   };
 
+  // 💰 OPEN SELL MODAL
   const handleSell = (crop) => {
     setSelectedCrop(crop);
   };
 
+  // 💰 SUBMIT SELL
   const handleSellSubmit = async (form) => {
-    await sellCrop(form);
-    setSelectedCrop(null);
-    fetchData();
-    alert("Crop successfully listed for trade!");
+
+    if (!selectedCrop?.id) {
+      alert("Invalid crop selected");
+      return;
+    }
+
+    if (!farmerId) {
+      alert("Farmer not identified");
+      return;
+    }
+
+    const payload = {
+      farmerId: farmerId,
+      cropId: selectedCrop.id,
+      quantityQuintal: Number(form.quantityQuintal),
+      expectedRate: Number(form.expectedRate)
+    };
+
+    console.log("Sell Payload:", payload); // DEBUG
+
+    try {
+      await sellCrop(payload);
+
+      setSelectedCrop(null);
+      fetchData();
+      alert("Crop successfully listed for trade!");
+
+    } catch (error) {
+      console.error("Sell error:", error);
+    }
   };
 
   return (

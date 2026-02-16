@@ -7,12 +7,11 @@ export const getLands = (farmerId) => {
 
 /* PROFILE */
 
-export const getFarmerProfile = (id) =>
-  axiosInstance.get(`/farmers/profile/${id}`);
+export const getFarmerProfile = (userId) =>
+  axiosInstance.get(`/farmers/profile/${userId}`);
 
-export const updateFarmerProfile = (id, data) =>
-  axiosInstance.post(`/farmers/profile/${id}`, data);
-
+export const updateFarmerProfile = (userId, data) =>
+  axiosInstance.post(`/farmers/profile/${userId}`, data);
 
 /* LANDS */
 
@@ -52,16 +51,20 @@ export const harvestCrop = (cropId, actualYieldQuintal) =>
 /* MARKET */
 
 export const getMarketPrices = (data) =>
-  axiosInstance.post("/market/prices", data);
+  axiosInstance.post("/market/mandi", data);
+
 
 export const getMSP = (cropName) =>
-  axiosInstance.get(`/msp/${cropName}`);
+  axiosInstance.post("/msp/get", {
+    cropName: cropName
+  });
 
 
 /* TRADES */
 
 export const sellCrop = (data) =>
   axiosInstance.post("/trades/sell", data);
+
 
 export const getTradeHistory = (farmerId) =>
   axiosInstance.get(`/trades/farmer/${farmerId}`);
@@ -70,28 +73,56 @@ export const getTradeHistory = (farmerId) =>
 /* STORE */
 
 export const getStoreProducts = () =>
-  axiosInstance.get("/store/products");
+  axiosInstance.get(`/store/products`);
 
 
 /* CART */
-
 export const addToCart = (data) =>
-  axiosInstance.post("/cart/add", data);
+  axiosInstance.post(`/cart/add`, data);
 
 export const getCart = () =>
-  axiosInstance.get("/cart");
+  axiosInstance.get(`/cart`);
 
 export const updateCart = (data) =>
-  axiosInstance.put("/cart/update", data);
+  axiosInstance.put(`/cart/update`, data);
 
 export const removeCartItem = (data) =>
-  axiosInstance.delete("/cart/remove", { data });
+  axiosInstance.delete(`/cart/remove`, { data });
 
 
 /* ORDERS */
 
+
 export const placeOrder = () =>
-  axiosInstance.post("/orders/place", {});
+  axiosInstance.post(`/orders/place`);
 
 export const getMyOrders = () =>
-  axiosInstance.get("/orders/my");
+  axiosInstance.get(`/orders/my`);
+
+
+// Remaining APIs like payments, contractors, schemes etc. can be added here as needed.
+
+  /* ================= SCHEMES ================= */
+
+export const getSchemesForFarmer = (data) =>
+  axiosInstance.post(`/schemes/farmer`, data);
+
+
+/* ================= MARKET ================= */
+
+export const getMandiPrices = (data) =>
+  axiosInstance.post(`/market/mandi`, data);
+
+
+/* ================= PAYMENTS ================= */
+
+export const getFarmerPayments = (farmerId) =>
+  axiosInstance.get(`/payments/farmer/${farmerId}`);
+
+
+/* ================= CONTRACTORS ================= */
+
+export const searchContractors = (district, workType) =>
+  axiosInstance.get(
+    `/contractors/search?district=${district}&workType=${workType}`
+  );

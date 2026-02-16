@@ -12,6 +12,19 @@ import AdminDashboard from "../pages/admin/AdminDashboard";
 import RoleProtectedRoute from "../components/RoleProtectedRoute";
 import FarmerMarket from "../pages/farmer/FarmerMarket";
 import FarmerLands from "../pages/farmer/FarmerLands";
+import FarmerTrades from "../pages/farmer/FarmerTrades";
+import FarmerStore from "../pages/farmer/FarmerStore";
+import FarmerCart from "../pages/farmer/FarmerCart";
+import FarmerOrders from "../pages/farmer/FarmerOrders";
+import FarmerProfile from "../pages/farmer/FarmerProfile";
+import FarmerContractors from "../pages/farmer/FarmerContractors";
+import FarmerSchemes from "../pages/farmer/FarmerSchemes";
+import FarmerPayments from "../pages/farmer/FarmerPayments";
+import ManageProducts from "../pages/store/ManageProducts";
+import StoreOrders from "../pages/store/StoreOrders";
+
+
+
 
 
 
@@ -22,6 +35,14 @@ const AppRoutes = () => {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
 
+            <Route path="/farmer/schemes" element={<FarmerSchemes />} />
+            <Route path="/farmer/payments" element={<FarmerPayments />} />
+
+
+            {/* <Route path="/store-owner" element={<StoreDashboard />} />
+            <Route path="/store-owner/products" element={<ManageProducts />} />
+            <Route path="/store-owner/orders" element={<StoreOrders />} /> */}
+
             <Route
                 path="/farmer"
                 element={
@@ -31,6 +52,13 @@ const AppRoutes = () => {
                 }
             />
 
+            <Route path="/farmer/cart" element={<FarmerCart />} />
+
+            <Route path="/farmer/profile" element={<FarmerProfile />} />
+            <Route path="/farmer/contractors" element={<FarmerContractors />} />
+
+
+
             <Route
                 path="/trader"
                 element={
@@ -39,6 +67,9 @@ const AppRoutes = () => {
                     </RoleProtectedRoute>
                 }
             />
+
+            <Route path="/farmer/store" element={<FarmerStore />} />
+
 
             <Route
                 path="/farmer/lands"
@@ -59,6 +90,9 @@ const AppRoutes = () => {
                 }
             />
 
+            <Route path="/farmer/trades" element={<FarmerTrades />} />
+
+
             <Route
                 path="/farmer/market"
                 element={
@@ -67,6 +101,9 @@ const AppRoutes = () => {
                     </RoleProtectedRoute>
                 }
             />
+
+            <Route path="/farmer/orders" element={<FarmerOrders />} />
+
 
             <Route
                 path="/contractor"
@@ -77,6 +114,15 @@ const AppRoutes = () => {
                 }
             />
 
+            {/* <Route
+                path="/store"
+                element={
+                    <RoleProtectedRoute allowedRoles={["STORE_OWNER"]}>
+                        <StoreDashboard />
+                    </RoleProtectedRoute>
+                }
+            /> */}
+
             <Route
                 path="/store"
                 element={
@@ -85,6 +131,25 @@ const AppRoutes = () => {
                     </RoleProtectedRoute>
                 }
             />
+
+            <Route
+                path="/store/products"
+                element={
+                    <RoleProtectedRoute allowedRoles={["STORE_OWNER"]}>
+                        <ManageProducts />
+                    </RoleProtectedRoute>
+                }
+            />
+
+            <Route
+                path="/store/orders"
+                element={
+                    <RoleProtectedRoute allowedRoles={["STORE_OWNER"]}>
+                        <StoreOrders />
+                    </RoleProtectedRoute>
+                }
+            />
+
 
             <Route
                 path="/admin"

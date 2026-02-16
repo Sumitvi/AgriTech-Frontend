@@ -4,7 +4,18 @@ export const menuConfig = {
     { name: "My Lands", path: "/farmer/lands" },
     { name: "My Crops", path: "/farmer/crops" },
     { name: "Market Prices", path: "/farmer/market" },
-    { name: "Store", path: "/farmer/store" }
+    { name: "Store", path: "/farmer/store" },
+    { name: "My Trades", path: "/farmer/trades" },
+    { name: "Cart", path: "/farmer/cart" },
+    { name: "My Orders", path: "/farmer/orders" },
+    { name: "Profile", path: "/farmer/profile" },
+    { name: "Contractors", path: "/farmer/contractors" },
+    { name: "Payments", path: "/farmer/payments" },
+    { name: "Schemes", path: "/farmer/schemes" },
+
+
+
+
   ],
 
   TRADER: [
@@ -13,16 +24,13 @@ export const menuConfig = {
     { name: "Trades", path: "/trader/trades" }
   ],
 
-  CONTRACTOR: [
-    { name: "Dashboard", path: "/contractor" },
-    { name: "Available Jobs", path: "/contractor/jobs" }
-  ],
 
-  STORE_OWNER: [
-    { name: "Dashboard", path: "/store" },
-    { name: "Products", path: "/store/products" },
-    { name: "Orders", path: "/store/orders" }
-  ],
+STORE_OWNER: [
+  { name: "Dashboard", path: "/store" },
+  { name: "Manage Products", path: "/store/products" },
+  { name: "Orders", path: "/store/orders" }
+]
+,
 
   ADMIN: [
     { name: "Dashboard", path: "/admin" },

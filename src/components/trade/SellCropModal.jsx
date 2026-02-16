@@ -16,30 +16,38 @@ const SellCropModal = ({ crop, onSubmit, onClose }) => {
     try {
       setLoading(true);
 
+      // 🔥 Correct endpoint: /market/mandi
       const marketRes = await getMarketPrices({
         cropName: crop.cropName,
-        state: "UP" // later can auto detect from profile
+        state: "UP"
       });
 
       const mspRes = await getMSP(crop.cropName);
 
-      const marketPrice = marketRes.data.modalPrice;
-      const mspPrice = mspRes.data.mspPrice;
+      let marketPrice = 0;
 
-      const suggested = marketPrice > mspPrice
-        ? marketPrice
-        : mspPrice;
+      // Backend returns LIST
+      if (marketRes?.data?.length > 0) {
+        marketPrice = marketRes.data[0].modalPrice;
+      }
+
+      const mspPrice = mspRes?.data?.mspPrice || 0;
+
+      const suggested = Math.max(marketPrice, mspPrice);
 
       setRate(suggested);
 
-      setSuggestion(
-        marketPrice > mspPrice
-          ? "Market price is better. Suggested rate applied."
-          : "MSP is higher. Suggested MSP rate applied."
-      );
+      if (marketPrice > mspPrice) {
+        setSuggestion("Market price is better. Suggested market rate applied.");
+      } else if (mspPrice > 0) {
+        setSuggestion("MSP is higher. Suggested MSP rate applied.");
+      } else {
+        setSuggestion("No price data found. Please enter rate manually.");
+      }
 
     } catch (error) {
       console.error("Price fetch error:", error);
+      setSuggestion("Unable to fetch price data.");
     } finally {
       setLoading(false);
     }
@@ -69,7 +77,7 @@ const SellCropModal = ({ crop, onSubmit, onClose }) => {
   return (
     <div className="fixed inset-0 bg-black bg-opacity-40 flex justify-center items-center">
 
-      <div className="bg-white p-6 rounded-lg w-96">
+      <div className="bg-white p-6 rounded-lg w-96 shadow-lg">
 
         <h3 className="text-xl font-bold mb-4">
           Sell {crop.cropName}
@@ -111,14 +119,14 @@ const SellCropModal = ({ crop, onSubmit, onClose }) => {
 
           <button
             onClick={handleSubmit}
-            className="bg-green-600 text-white px-4 py-2 rounded"
+            className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
           >
             List for Trade
           </button>
 
           <button
             onClick={onClose}
-            className="bg-gray-400 px-4 py-2 rounded"
+            className="bg-gray-400 px-4 py-2 rounded hover:bg-gray-500"
           >
             Cancel
           </button>
