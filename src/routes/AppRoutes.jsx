@@ -32,6 +32,7 @@ import AdminPayments from "../pages/admin/AdminPayments";
 import AdminMSP from "../pages/admin/AdminMSP";
 import AdminMandi from "../pages/admin/AdminMandi";
 import AdminContractors from "../pages/admin/AdminContractors";
+import LandingPage from "../pages/LandingPage";
 
 
 
@@ -43,6 +44,7 @@ const AppRoutes = () => {
     return (
         <Routes>
 
+            <Route path="/" element={<LandingPage />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
 

@@ -123,6 +123,6 @@ export const getFarmerPayments = (farmerId) =>
 /* ================= CONTRACTORS ================= */
 
 export const searchContractors = (district, workType) =>
-  axiosInstance.get(
-    `/contractors/search?district=${district}&workType=${workType}`
-  );
+  axiosInstance.get("/contractors/search", {
+    params: { district, workType }
+  });
